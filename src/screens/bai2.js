@@ -1,45 +1,49 @@
-import React, {useState} from 'react';
 import {
-  View,
-  StyleSheet,
-  ScrollView,
-  RefreshControl,
+  ImageBackground,
+  Pressable,
   StatusBar,
+  StyleSheet,
   Text,
+  View,
 } from 'react-native';
+import React from 'react';
 
 const Bai2 = () => {
-  const [refresh, setRefresh] = useState(false);
-  const [barStyleLightContent, setBarStyleLightContent] = useState(false);
-  const reload = () => {
-    setRefresh(false);
-    setBarStyleLightContent(!barStyleLightContent);
-  };
-
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      refreshControl={
-        <RefreshControl refreshing={refresh} onRefresh={reload} />
-      }>
-      <StatusBar
-        barStyle={barStyleLightContent ? 'light-content' : 'dark-content'}
-        translucent
-        backgroundColor={'transparent'}
-      />
-
-      <Text style={{ fontWeight: '900', fontSize: 20 , color: 'black'}}>Keo de load</Text>
-    </ScrollView>
+    <ImageBackground
+      source={require('../img/backgroud.jpg')}
+      style={{flex: 1, justifyContent: 'center', padding: 40, gap: 10}}>
+      <Text style={styles.title}>Discover {'\n'}world with us</Text>
+      <Text style={{color: '#ffffffc6'}}>
+        What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing
+        and typesetting industry.{' '}
+      </Text>
+      <Pressable>
+        <Text
+          style={{
+            paddingVertical: 10,
+            paddingHorizontal: 20,
+            fontSize: 15,
+            color: 'black',
+            backgroundColor: 'white',
+            width: '40%',
+            borderRadius: 10,
+          }}>
+          Get stated
+        </Text>
+      </Pressable>
+      <StatusBar translucent backgroundColor={'rgba(0, 0, 0, 0)'} />
+    </ImageBackground>
   );
 };
 
+export default Bai2;
+
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#c0eaff',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1
+  title: {
+    fontFamily: 'JetBrainsMono-VariableFont_wght',
+    fontWeight: 'bold',
+    fontSize: 30,
+    color: 'white',
   },
 });
-
-export default Bai2;
